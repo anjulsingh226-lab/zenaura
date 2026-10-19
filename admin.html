@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><title>ZENAURA Admin</title>
+<style>
+:root{--bg:#07060d;--card:rgba(255,255,255,.05);--bd:rgba(255,255,255,.11);--tx:#f3f1fa;--mu:#9b96b3;--v:#8b5cf6;--g:#f5c76b;--ok:#34d399;--r:#ff5d7a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,sans-serif;padding:18px;background-image:radial-gradient(700px 400px at 85% -5%,rgba(139,92,246,.25),transparent)}
+.w{max-width:900px;margin:0 auto}h1{font-size:22px;letter-spacing:.15em;background:linear-gradient(90deg,var(--g),var(--v));-webkit-background-clip:text;background-clip:text;color:transparent}
+input,button{font:inherit;color:var(--tx)}input{padding:12px;border-radius:10px;border:1px solid var(--bd);background:rgba(255,255,255,.05);width:100%}
+.btn{padding:9px 14px;border-radius:10px;border:1px solid var(--bd);background:rgba(255,255,255,.06);cursor:pointer;font-weight:600}
+.p{background:linear-gradient(135deg,var(--g),var(--v));color:#150f26;border:0}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;margin:12px 0}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.sp{justify-content:space-between}
+.mu{color:var(--mu);font-size:13px}.tag{font-size:11px;padding:3px 9px;border-radius:99px;font-weight:700}
+.pending{background:rgba(245,199,107,.18);color:var(--g)}.verified{background:rgba(52,211,153,.18);color:var(--ok)}.rejected{background:rgba(255,93,122,.18);color:var(--r)}
+.chip{padding:7px 14px;border-radius:99px;border:1px solid var(--bd);background:var(--card);cursor:pointer;font-size:13px}.chip.on{border-color:var(--g);color:var(--g)}
+a{color:var(--g)}
+</style></head><body><div class="w">
+<h1>ZENAURA ADMIN</h1>
+<div class="card" id="lg"><div class="row"><input id="pw" type="password" placeholder="Admin password" style="flex:1;min-width:180px"><button class="btn p" onclick="login()">Login</button></div><div class="mu" id="er" style="margin-top:8px"></div></div>
+<div id="app" hidden>
+ <div class="row sp"><div class="row" id="flt"></div><div class="row"><button class="btn" onclick="csv()">⬇ CSV</button><button class="btn" onclick="load()">↻ Refresh</button><button class="btn" onclick="logout()">Logout</button></div></div>
+ <div class="mu" id="cnt" style="margin-top:8px"></div><div id="list"></div>
+</div></div>
+<script>
+const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let T=localStorage.getItem('zt')||'',R=[],F='all';
+async function api(a,body,qs=''){const r=await fetch('/api?a='+a+qs,{method:body?'POST':'GET',headers:{'Content-Type':'application/json',...(T?{Authorization:'Bearer '+T}:{})},body:body?JSON.stringify(body):undefined});const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||'Error');return j}
+async function login(){try{const j=await api('login',{password:$('pw').value});T=j.token;localStorage.setItem('zt',T);load()}catch(e){$('er').textContent=e.message}}
+function logout(){T='';localStorage.removeItem('zt');location.reload()}
+async function load(){try{R=await api('list');$('lg').hidden=true;$('app').hidden=false;render()}catch(e){$('lg').hidden=false;$('app').hidden=true;if(T)$('er').textContent=e.message}}
+function render(){
+ $('flt').innerHTML=['all','pending','verified','rejected'].map(f=>`<button class="chip ${f===F?'on':''}" onclick="F='${f}';render()">${f} (${f==='all'?R.length:R.filter(r=>r.status===f).length})</button>`).join('');
+ const L=R.filter(r=>F==='all'||r.status===F);$('cnt').textContent=L.length+' registrations';
+ $('list').innerHTML=L.map(r=>`<div class="card"><div class="row sp"><b>${esc(r.name)}</b><span class="tag ${r.status}">${r.status}</span></div>
+ <div class="mu" style="margin:6px 0">📞 ${esc(r.phone)} · 👥 Team ${r.team} · 🎂 Age ${r.age} · 💰 ${esc(r.budget)}<br>${new Date(r.created_at).toLocaleString()}</div>
+ <div class="row"><button class="btn" onclick="shot('${r.id}')">View Screenshot</button><a class="btn" href="https://wa.me/91${esc(r.phone)}" target="_blank" rel="noopener" style="text-decoration:none">WhatsApp</a>
+ ${r.status!=='verified'?`<button class="btn p" onclick="st('${r.id}','verified')">Verify</button>`:''}${r.status!=='rejected'?`<button class="btn" onclick="st('${r.id}','rejected')">Reject</button>`:''}<button class="btn" onclick="del('${r.id}')">🗑</button></div></div>`).join('')||'<div class="mu">Koi registration nahi.</div>'}
+async function shot(id){try{const j=await api('shot',null,'&id='+id);window.open(j.url,'_blank')}catch(e){alert(e.message)}}
+async function st(id,status){try{await api('status',{id,status});load()}catch(e){alert(e.message)}}
+async function del(id){if(confirm('Ye registration delete karni hai?')){try{await api('del',{id});load()}catch(e){alert(e.message)}}}
+function csv(){const rows=[['Name','Phone','Team','Age','Budget','Status','Date'],...R.map(r=>[r.name,r.phone,r.team,r.age,r.budget,r.status,new Date(r.created_at).toLocaleString()])];
+ const t=rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/csv'}));a.download='zenaura-registrations.csv';a.click()}
+if(T)load();
+</script></body></html>

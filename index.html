@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZENAURA — Start Dropshipping</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07060d;--card:rgba(255,255,255,.05);--bd:rgba(255,255,255,.11);--tx:#f3f1fa;--mu:#9b96b3;--v:#8b5cf6;--g:#f5c76b;--ok:#34d399;--r:#ff5d7a}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--tx);font-family:'Plus Jakarta Sans',system-ui,sans-serif;overflow-x:hidden;
+background-image:radial-gradient(700px 420px at 85% -5%,rgba(139,92,246,.30),transparent),radial-gradient(600px 400px at 0% 10%,rgba(245,199,107,.14),transparent)}
+.w{max-width:520px;margin:0 auto;padding:22px 18px 40px}
+.brand{text-align:center;margin:14px 0 22px}
+.logo{font-family:'Playfair Display',serif;font-weight:800;font-size:34px;letter-spacing:.22em;background:linear-gradient(90deg,var(--g),#fff 50%,var(--v));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--mu);font-size:12px;letter-spacing:.3em;margin-top:4px}
+.prog{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 0 22px}
+.dot{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;border:1px solid var(--bd);color:var(--mu);background:var(--card)}
+.dot.on{background:linear-gradient(135deg,var(--v),var(--g));color:#120d1f;border:0}
+.dot.done{background:var(--ok);color:#06241a;border:0}
+.bar{width:38px;height:2px;background:var(--bd)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:24px 20px;backdrop-filter:blur(18px);box-shadow:0 20px 60px rgba(0,0,0,.45)}
+h1{font-size:24px;line-height:1.25;margin:0 0 6px}
+h1 span{background:linear-gradient(90deg,var(--g),var(--v));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--mu);font-size:14px;line-height:1.6;margin:0 0 18px}
+label{display:block;font-size:12.5px;color:var(--mu);margin:14px 0 6px;font-weight:600;letter-spacing:.03em}
+input,select{width:100%;padding:13px 14px;border-radius:12px;border:1px solid var(--bd);background:rgba(255,255,255,.05);color:var(--tx);font:inherit;outline:none}
+input:focus,select:focus{border-color:var(--v);box-shadow:0 0 0 3px rgba(139,92,246,.22)}
+select option{background:#14111f}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{width:100%;margin-top:22px;padding:15px;border:0;border-radius:14px;font:inherit;font-weight:700;font-size:16px;cursor:pointer;color:#150f26;background:linear-gradient(135deg,var(--g),#ffdf9a 45%,var(--v));box-shadow:0 10px 34px rgba(139,92,246,.35);transition:.2s}
+.btn:hover{transform:translateY(-2px)}.btn:disabled{opacity:.45;transform:none;cursor:not-allowed}
+.ghost{background:transparent;color:var(--tx);border:1px solid var(--bd);box-shadow:none;margin-top:10px}
+.err{color:var(--r);font-size:13px;min-height:18px;margin-top:10px;text-align:center}
+.fee{display:flex;justify-content:space-between;align-items:center;background:rgba(245,199,107,.09);border:1px solid rgba(245,199,107,.35);border-radius:14px;padding:12px 16px;margin-bottom:16px}
+.fee b{font-size:24px;color:var(--g)}
+.qr{background:#fff;border-radius:18px;padding:12px;width:min(260px,70%);margin:0 auto;box-shadow:0 0 50px rgba(139,92,246,.4)}
+.qr img{width:100%;display:block;border-radius:8px}
+.tm{text-align:center;margin:18px 0 4px}
+.tm .t{font-size:42px;font-weight:800;letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.tm.low .t{color:var(--r)}
+.tm .l{color:var(--mu);font-size:12px}
+.exp{background:rgba(255,93,122,.1);border:1px solid rgba(255,93,122,.4);border-radius:12px;padding:12px;font-size:13.5px;text-align:center;margin-top:10px}
+.up{border:1.5px dashed var(--bd);border-radius:14px;padding:18px;text-align:center;cursor:pointer;margin-top:6px;color:var(--mu);font-size:14px}
+.up:hover{border-color:var(--v)}
+.up img{max-width:100%;max-height:180px;border-radius:10px;display:block;margin:8px auto 0}
+.thanks{text-align:center;padding:30px 10px}
+.check{width:84px;height:84px;border-radius:50%;margin:0 auto 18px;display:grid;place-items:center;font-size:42px;background:linear-gradient(135deg,var(--ok),#10b981);color:#04231a;box-shadow:0 0 50px rgba(52,211,153,.45)}
+.thanks h2{font-size:26px;margin:0 0 10px}.thanks p{color:var(--mu);line-height:1.7;margin:0}
+[hidden]{display:none!important}
+footer{text-align:center;color:var(--mu);font-size:12px;margin-top:24px}
+</style></head><body><div class="w">
+<div class="brand"><div class="logo">ZENAURA</div><div class="sub">DROPSHIPPING PARTNER PROGRAM</div></div>
+<div class="prog" id="prog"><div class="dot on" id="d1">1</div><div class="bar"></div><div class="dot" id="d2">2</div><div class="bar"></div><div class="dot" id="d3">✓</div></div>
+
+<div class="card" id="s1">
+ <h1>Start Dropshipping with <span>ZENAURA</span></h1>
+ <p class="lead">Register here. Apni details bharo, hamari team aapko dropshipping journey me guide karegi.</p>
+ <label>Full Name</label><input id="name" placeholder="Aapka poora naam" autocomplete="name">
+ <label>Mobile Number</label><input id="phone" inputmode="numeric" maxlength="10" placeholder="10 digit number" autocomplete="tel">
+ <div class="two"><div><label>Persons in Team</label><input id="team" type="number" inputmode="numeric" min="1" max="100" placeholder="Jaise 2"></div>
+ <div><label>Age</label><input id="age" type="number" inputmode="numeric" min="14" max="90" placeholder="Jaise 22"></div></div>
+ <label>Budget</label><select id="budget"><option value="">Budget chuno</option><option>Under ₹10,000</option><option>₹10,000 – ₹25,000</option><option>₹25,000 – ₹50,000</option><option>₹50,000 – ₹1,00,000</option><option>₹1,00,000+</option></select>
+ <div class="err" id="e1"></div>
+ <button class="btn" onclick="next()">Next → Payment</button>
+</div>
+
+<div class="card" id="s2" hidden>
+ <h1>Complete your <span>Registration</span></h1>
+ <p class="lead">QR scan karke registration fee pay karo, phir payment ka screenshot upload karo.</p>
+ <div class="fee"><div><div style="font-size:12px;color:var(--mu)">Registration Fee</div><b>₹100</b></div><div style="font-size:12px;color:var(--mu);text-align:right">One time<br>payment</div></div>
+ <div class="qr"><img src="/qr.png" alt="Payment QR"></div>
+ <div class="tm" id="tmb"><div class="t" id="tm">05:00</div><div class="l">Is time ke andar payment complete karo</div></div>
+ <div class="exp" id="exp" hidden>⏰ Timer khatam ho gaya. Payment ho chuka hai to screenshot upload karne ke liye timer dobara shuru karo.<button class="btn ghost" onclick="startTimer()">Timer dobara shuru karo</button></div>
+ <label>Upload Payment Screenshot</label>
+ <div class="up" id="up" onclick="$('fi').click()"><span id="upt">📤 Screenshot chuno</span><img id="pv" hidden alt=""></div>
+ <input id="fi" type="file" accept="image/*" hidden onchange="pick()">
+ <div class="err" id="e2"></div>
+ <button class="btn" id="sb" onclick="submitReg()">Submit</button>
+ <button class="btn ghost" onclick="go(1)">← Back</button>
+</div>
+
+<div class="card thanks" id="s3" hidden>
+ <div class="check">✓</div>
+ <h2>Thank You!</h2>
+ <p>Start your dropshipping journey with <b style="color:var(--g)">ZENAURA</b>.<br>Our team will verify your payment and contact you soon.</p>
+</div>
+<footer>© ZENAURA</footer></div>
+<script>
+const $=id=>document.getElementById(id);
+let data={},tl=0,tm=null,shot=null;
+function go(n){[1,2,3].forEach(i=>{$('s'+i).hidden=i!==n;const d=$('d'+i);d.className='dot'+(i<n?' done':i===n?' on':'')});$('prog').hidden=n===3;window.scrollTo({top:0,behavior:'smooth'});if(n!==2)clearInterval(tm);}
+function next(){const v=id=>$(id).value.trim();const e=$('e1');e.textContent='';
+ const name=v('name'),phone=v('phone'),team=+v('team'),age=+v('age'),budget=v('budget');
+ if(name.length<2)return e.textContent='Apna naam likho';
+ if(!/^[6-9]\d{9}$/.test(phone))return e.textContent='Sahi 10 digit mobile number likho';
+ if(!(team>=1&&team<=100))return e.textContent='Team me kitne log hain (1 se 100) likho';
+ if(!(age>=14&&age<=90))return e.textContent='Sahi age likho';
+ if(!budget)return e.textContent='Budget chuno';
+ data={name,phone,team,age,budget};go(2);startTimer();}
+function startTimer(){clearInterval(tm);tl=300;$('exp').hidden=true;$('sb').disabled=false;tick();tm=setInterval(tick,1000)}
+function tick(){const m=String(Math.floor(tl/60)).padStart(2,'0'),s=String(tl%60).padStart(2,'0');$('tm').textContent=m+':'+s;$('tmb').className='tm'+(tl<=60?' low':'');
+ if(tl<=0){clearInterval(tm);$('exp').hidden=false;$('sb').disabled=true}else tl--}
+function pick(){const f=$('fi').files[0];$('e2').textContent='';if(!f)return;
+ if(!f.type.startsWith('image/')){$('e2').textContent='Sirf image (screenshot) chuno';return}
+ const img=new Image(),u=URL.createObjectURL(f);
+ img.onload=()=>{const M=1400;let w=img.width,h=img.height;if(Math.max(w,h)>M){const r=M/Math.max(w,h);w=Math.round(w*r);h=Math.round(h*r)}
+  const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,w,h);x.drawImage(img,0,0,w,h);
+  const d=c.toDataURL('image/jpeg',.72);shot=d.split(',')[1];$('pv').src=d;$('pv').hidden=false;$('upt').textContent='✅ Screenshot chuna gaya (badalne ke liye dobara tap karo)';URL.revokeObjectURL(u)};
+ img.onerror=()=>{$('e2').textContent='Ye image khul nahi rahi, dusri chuno'};img.src=u}
+async function submitReg(){const e=$('e2');e.textContent='';if(!shot)return e.textContent='Pehle payment screenshot upload karo';
+ const b=$('sb');b.disabled=true;b.textContent='Submitting…';
+ try{const r=await fetch('/api?a=register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...data,shot})});
+ const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||'Kuch gadbad hui');
+ go(3)}catch(x){e.textContent=x.message;b.disabled=false;b.textContent='Submit'}}
+</script></body></html>
